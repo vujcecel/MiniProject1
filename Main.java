@@ -19,6 +19,7 @@ class Main {
     int userGuess = scanner.nextInt();
     int numTries = 0;
 
+    // Game loop
     while(userGuess != randomNum) {
       numTries++;
       if (userGuess > randomNum) {
@@ -38,14 +39,13 @@ class Main {
 
     System.out.println("Welcome to the guessing game!");
 
-    // Prompt max number (exclusive)
     System.out.print("Please enter any positive whole number: ");
-    int userNum = scanner.nextInt();
+    int userNum = scanner.nextInt(); // Prompt max number (exclusive)
 
     int randomNum = random.nextInt(userNum); // Generate number
     System.out.println("A random number to guess has been generated");
-
-    playGame(randomNum, userNum);
+    
+    playGame(randomNum, userNum); // Start game
 
     scanner.close();
   }
