@@ -22,12 +22,12 @@ class Main {
     // Game loop
     while(userGuess != randomNum) {
       numTries++;
-      if (userGuess > randomNum) {
+      
+      if (userGuess > randomNum)
         System.out.println("Guess lower!");
-      }
-      else {
+      else
         System.out.println("Guess higher!");
-      }
+      
       System.out.print("Enter your new guess: ");
       userGuess = scanner.nextInt();
     }
