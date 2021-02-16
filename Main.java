@@ -1,7 +1,7 @@
 /*
 Mini Project 1
-Group #_: Evan Vujcec, 
-Date: (whatever date you turn it in)
+Group #4: Evan Vujcec, Zac Howe, Zachary Preszler, Jake Hartman
+Date: 16-2-2021
 */
 
 import java.util.Scanner;
