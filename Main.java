@@ -17,7 +17,7 @@ class Main {
 
     // Game setup
     int userGuess = scanner.nextInt();
-    int numTries = 0;
+    int numTries = 1;
 
     // Game loop
     while(userGuess != randomNum) {
@@ -32,15 +32,18 @@ class Main {
       userGuess = scanner.nextInt();
     }
 
-    System.out.printf("Great, you win! It took you %d tries.", numTries);
+    System.out.printf("Great, you win! It took you %d tries.\n", numTries);
   }
 
   public static void main(String[] args) {
 
     System.out.println("Welcome to the guessing game!");
 
-    System.out.print("Please enter any positive whole number: ");
-    int userNum = scanner.nextInt(); // Prompt max number (exclusive)
+    int userNum = 0;
+    while (!(userNum > 0)) {
+      System.out.print("Please enter any positive whole number: ");
+      userNum = scanner.nextInt(); // Prompt max number (exclusive)
+    }
 
     int randomNum = random.nextInt(userNum); // Generate number
     System.out.println("A random number to guess has been generated");
