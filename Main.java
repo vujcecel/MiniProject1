@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 class Main {
-  // Initialize util objects
+  // Initialize util objects (easier to keep initialized outside function scopes)
   private static Scanner scanner = new Scanner(System.in);
   private static Random random = new Random();
 
@@ -19,30 +19,30 @@ class Main {
     int userGuess = scanner.nextInt();
     int numTries = 1;
 
-    // Game loop
+    // Game loop (no need for costlier > operator (will make no difference in JVM but tuning is fun))
     while(userGuess != randomNum) {
-      numTries++;
-      
       if (userGuess > randomNum)
         System.out.println("Guess lower!");
-      else
+      else // not higher or equal no need to do additional memcmp (will make no difference in JVM but tuning is fun)
         System.out.println("Guess higher!");
       
       System.out.print("Enter your new guess: ");
       userGuess = scanner.nextInt();
+      numTries++;
     }
 
-    System.out.printf("Great, you win! It took you %d tries.\n", numTries);
+    System.out.printf("Great, you win! It took you %d tries.%n", numTries);
   }
 
   public static void main(String[] args) {
 
     System.out.println("Welcome to the guessing game!");
 
+    // Prompt max number ensuring no negative number causing fatal error
     int userNum = 0;
     while (!(userNum > 0)) {
       System.out.print("Please enter any positive whole number: ");
-      userNum = scanner.nextInt(); // Prompt max number (exclusive)
+      userNum = scanner.nextInt();
     }
 
     int randomNum = random.nextInt(userNum); // Generate number
@@ -50,6 +50,6 @@ class Main {
     
     playGame(randomNum, userNum); // Start game
 
-    scanner.close();
+    scanner.close(); // Cleanup scanner (obviously unnecessary but best practices)
   }
 }
